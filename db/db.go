@@ -22,7 +22,7 @@ func InitDb() *sql.DB {
 	}
 	var err error
 
-	db, err := sql.Open("postgres", os.Getenv("FCC_DB_URL"))
+	db, err := sql.Open("postgres", os.Getenv("DB_URL"))
 
 	if err != nil {
 		log.Fatal(err)
@@ -38,7 +38,7 @@ func InitDb() *sql.DB {
 }
 
 func applyMigrations() error {
-	m, err := migrate.New(migrationsDir, os.Getenv("FCC_DB_URL"))
+	m, err := migrate.New(migrationsDir, os.Getenv("DB_URL"))
 	if err != nil {
 		return err
 	}
